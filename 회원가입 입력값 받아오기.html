@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <script>
+      function check(){  // 자바스크립트로 회원가입 기능 함수 구현
+        var id = f.id.value;  // 변수 생성
+        var pwd = f.pwd.value;
+        var name = f.name.value;
+        var email = f.email.value;
+        alert(id + ' / ' + pwd + ' / ' + name + ' / ' + email);  // 입력값 받아와서 알림
+        alert(f.gender.value);  // 성별 라디오버튼값 받아와서 알림
+
+        for(i = 0; i < f.hobby.length; ++i){  // 체크박스를 탐색
+          if(f.hobby[i].checked == true){  // 체크된 박스면
+            alert(f.hobby[i].value);  // 입력값 받아와서 알림
+         }
+        }
+        var idx = f.job.options.selectedIndex;  // 콤보박스의 선택된 인덱스를 받아옴
+        alert(f.job.options[idx].value);  // 직업값을 가져와서 알림
+
+        alert(f.hello.value);  // 자기소개로 입력된 텍스트를 받아와서 알림
+      }
+    </script>
+</head>
+<body>
+<h3>회원가입</h3>
+<!-- 폼을 만드는 form 태그, action=폼태그 안의 내용을 처리해 줄 서버 프로그램,
+      method=사용자가 입력한 내용을 서버 쪽 프로그램으로 어떻게 넘겨줄 것인지 지정한다.
+      method에서 사용할 수 있는 속성값은
+      get : 데이터를 256~4096byte까지만 서버로 넘길 수 있다. 주소 표시줄에 사용자가 입력한 내용이 그대로 드러나는 단점이 있다.
+      post : 입력한 내용의 길이에 제한받지 않고 사용자가 입력한 내용도 드러나지 않는다. -->
+<form action="" method="post" name="f">
+  <table border="1">  <!-- 테이블 생성 -->
+    <tr><th>id</th><td><input type="text" name="id" value="id를 입력하세요."></td></tr>  <!-- 글을 입력할 수 있는 entry와 이름 속성을 설정 -->
+    <tr><th>pwd</th><td><input type="password" name="pwd"></td></tr>  <!-- password 타입은 entry에 타이핑하는 것들이 가려진다. -->
+    <tr><th>name</th><td><input type="text" name="name"></td></tr>
+    <tr><th>email</th><td><input type="text" name="email"></td></tr>
+    <!-- 라디오 버튼 생성 -->
+    <tr><th>성별</th><td><input type="radio" name="gender" value="f">여&nbsp&nbsp<input type="radio" name="gender" value="m">남</td></tr>
+    <tr><th>취미</th>
+        <td>
+          <!-- 체크 박스 생성 -->
+          <input type="checkbox" name="hobby" value="h1">노래
+          <input type="checkbox" name="hobby" value="h2">코딩
+          <input type="checkbox" name="hobby" value="h3">운동
+          <input type="checkbox" name="hobby" value="h4">게임
+        </td>
+    </tr>
+    <tr><th>직업</th>
+        <td>
+          <!-- 콤보 박스 생성 -->
+          <select name="job">
+            <option value="1">학생</option>
+            <option value="2">회사원</option>
+            <option value="3">무직</option>
+            <option value="4">기타</option>
+          </select>
+        </td>
+    </tr>
+    <tr><th>가입인사</th>
+        <td><textarea name="hello" rows="10" cols="45">안녕하세요.</textarea></td> <!-- 텍스트 생성 -->
+    </tr>
+    <!-- 버튼 생성, 가입버튼에 클릭했을때 동작할 핸들러 삽입 -->
+    <tr><td colspan="2"><input type="submit" value="가입" onclick="check()">&nbsp<input type="reset" value="취소"></td></tr>
+  </table>
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
