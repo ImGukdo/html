@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+</head>
+<body>
+<h3>회원가입</h3>
+<!-- 폼을 만드는 form 태그, action=폼태그 안의 내용을 처리해 줄 서버 프로그램,
+      method=사용자가 입력한 내용을 서버 쪽 프로그램으로 어떻게 넘겨줄 것인지 지정한다.
+      method에서 사용할 수 있는 속성값은
+      get : 데이터를 256~4096byte까지만 서버로 넘길 수 있다. 주소 표시줄에 사용자가 입력한 내용이 그대로 드러나는 단점이 있다.
+      post : 입력한 내용의 길이에 제한받지 않고 사용자가 입력한 내용도 드러나지 않는다. -->
+<form action="" method="post">
+  <table border="1">  <!-- 테이블 생성 -->
+    <tr><th>id</th><td><input type="text" name="id" value="id를 입력하세요."></td></tr>  <!-- 글을 입력할 수 있는 entry와 이름 속성을 설정 -->
+    <tr><th>pwd</th><td><input type="password" name="pwd"></td></tr>  <!-- password 타입은 entry에 타이핑하는 것들이 가려진다. -->
+    <tr><th>name</th><td><input type="text" name="name"></td></tr>
+    <tr><th>email</th><td><input type="text" name="email"></td></tr>
+    <!-- 라디오 버튼 생성 -->
+    <tr><th>성별</th><td><input type="radio" name="gender">여&nbsp&nbsp<input type="radio" name="gender">남</td></tr>
+    <tr><th>취미</th>
+        <td>
+          <!-- 체크 박스 생성 -->
+          <input type="checkbox" name="hobby">노래
+          <input type="checkbox" name="hobby">코딩
+          <input type="checkbox" name="hobby">운동
+          <input type="checkbox" name="hobby">게임
+        </td>
+    </tr>
+    <tr><th>직업</th>
+        <td>
+          <!-- 콤보 박스 생성 -->
+          <select name="job">
+            <option value="1">학생</option>
+            <option value="2">회사원</option>
+            <option value="3">무직</option>
+            <option value="4">기타</option>
+          </select>
+        </td>
+    </tr>
+    <tr><th>가입인사</th>
+        <td><textarea name="hello" rows="10" cols="45">안녕하세요.</textarea></td> <!-- 텍스트 생성 -->
+    </tr>
+    <!-- 버튼 생성 -->
+    <tr><td colspan="2"><input type="submit" value="가입">&nbsp<input type="reset" value="취소"></td></tr>
+  </table>
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
