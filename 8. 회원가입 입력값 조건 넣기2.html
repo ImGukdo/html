@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <script>
+      var ids = ["aaa", "bbb", "ccc", "ddd"];  // 아이디 중복체크를 위해 임시로 넣어둔 이미 있는 아이디들
+
+      function f1(){  // 아이디 중복체크 함수
+        var res = "사용가능한 id";  // 응답 메시지 선언
+        var id_tag = document.getElementById("id");  // id가 id인 html 요소를 가져온다.
+        var id = id_tag.value;
+        for(i = 0; i < ids.length; ++i){  // 이미 있는 아이디들을 탐색
+            if(id == ids[i]){  // 이미 있는 아이디와 같으면
+                res = "사용중인 id";  // 응답 메시지ㅣ 변경
+                break;
+            }
+        }
+        var span_tag = document.getElementById("sp1");  // id가 sp1인 html 요소를 가져온다.
+        span_tag.innerHTML = res;  // 가져온 sp1의 html의 요소를 변경
+      }
+
+      function check() {
+      /*
+        var id = document.getElementById("id").value;  // 값을 가져오는 방법 중 하나
+        var pwd = document.getElementById("pwd").value;
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        alert(id + ' / ' + pwd + ' / ' + name + ' / ' + email);
+        */
+         var id = document.forms["f"]["id"].value;  // 값을 가져오는 다른 방법
+         var pwd = document.forms["f"]["pwd"].value;
+         var name = document.forms["f"]["name"].value;
+         var email = document.forms["f"]["email"].value;
+         alert(id + ' / ' + pwd + ' / ' + name + ' / ' + email);  // 가져온 값을 알림
+
+         var gender = document.forms["f"]["gender"].value;
+         alert("gender : " + gender);
+
+         var hobby = document.forms["f"]["hobby"];
+         for(i = 0; i < hobby.length; ++i){
+            if(hobby[i].checked == true){
+                alert(hobby[i].value);
+            }
+         }
+         var job = document.forms["f"]["job"].value;
+         alert(job);
+         var hello = document.forms["f"]["hello"].value;
+         alert(hello);
+      }
+    </script>
+</head>
+<body>
+<h3>회원가입</h3>
+<!-- 폼을 만드는 form 태그, action=폼태그 안의 내용을 처리해 줄 서버 프로그램,
+      method=사용자가 입력한 내용을 서버 쪽 프로그램으로 어떻게 넘겨줄 것인지 지정한다.
+      method에서 사용할 수 있는 속성값은
+      get : 데이터를 256~4096byte까지만 서버로 넘길 수 있다. 주소 표시줄에 사용자가 입력한 내용이 그대로 드러나는 단점이 있다.
+      post : 입력한 내용의 길이에 제한받지 않고 사용자가 입력한 내용도 드러나지 않는다. -->
+<form action="" method="post" name="f">
+  <table border="1">  <!-- 테이블 생성 -->
+    <tr><th>id</th>
+        <td><input type="text" name="id" id="id">  <!-- id 속성값들을 넣어줌 -->
+            <input type="button" value="중복체크" onclick="f1()">
+            <span id="sp1"></span>  <!-- f1함수의 실행 결과에 따라 html 요소가 넣어진다. -->
+        </td></tr>  <!-- 글을 입력할 수 있는 entry와 이름 속성을 설정 -->
+    <tr><th>pwd</th><td><input type="password" name="pwd" id="pwd"></td></tr>  <!-- password 타입은 entry에 타이핑하는 것들이 가려진다. -->
+    <tr><th>name</th><td><input type="text" name="name" id="name"></td></tr>
+    <tr><th>email</th><td><input type="text" name="email" id="email"></td></tr>
+    <!-- 라디오 버튼 생성 -->
+    <tr><th>성별</th><td><input type="radio" name="gender" value="f" checked>여&nbsp&nbsp<input type="radio" name="gender" value="m">남</td></tr>
+    <tr><th>취미</th>
+        <td>
+          <!-- 체크 박스 생성 -->
+          <input type="checkbox" name="hobby" value="h1" checked>노래
+          <input type="checkbox" name="hobby" value="h2">코딩
+          <input type="checkbox" name="hobby" value="h3">운동
+          <input type="checkbox" name="hobby" value="h4">게임
+        </td>
+    </tr>
+    <tr><th>직업</th>
+        <td>
+          <!-- 콤보 박스 생성 -->
+          <select name="job">
+            <option value="1">학생</option>
+            <option value="2">회사원</option>
+            <option value="3">무직</option>
+            <option value="4">기타</option>
+          </select>
+        </td>
+    </tr>
+    <tr><th>가입인사</th>
+        <td><textarea name="hello" rows="10" cols="45">안녕하세요.</textarea></td> <!-- 텍스트 생성 -->
+    </tr>
+    <!-- 버튼 생성, 가입버튼에 클릭했을때 동작할 핸들러 삽입 -->
+    <tr><td colspan="2"><input type="submit" value="가입" onclick="check()">&nbsp<input type="reset" value="취소"></td></tr>
+  </table>
+</form>
+</body>
+</html>
