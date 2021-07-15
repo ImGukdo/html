@@ -9,6 +9,16 @@ app = Flask(__name__)  # flask 객체 생성, 웹 어플리케이션 객체
 def my_root() :
     return "hello test"  # 요청 url에 hello test 출력
 
+# get 방식으로 요청 url 출력
+@app.route("/test1")
+def test1() :
+    return "test1"
+
+# post 방식으로 요청 url 출력, get 방식처럼 주소창에 url을 입력해서 접근할 수 없다.
+@app.route("/test2", methods=["POST"])
+def test2() :
+    return "test2"
+
 
 if __name__ == "__main__" :
     app.run()  # flask 서버 실행
