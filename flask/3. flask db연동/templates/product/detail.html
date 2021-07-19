@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>제품상세화면</title>
+    <script>
+        function go(){
+            location.href = '/';
+        }
+    </script>
+</head>
+<body>
+<h3>제품 상세 페이지</h3>
+<table border="1">
+    <tr>
+        <th>제품번호</th><td>{{prod.num}}</td>
+    </tr>
+    <tr>
+        <th>제품명</th><td>{{prod.name}}</td>
+    </tr>
+    <tr>
+        <th>제품가격</th><td>{{prod.price}}</td>
+    </tr>
+    <tr>
+        <th>제품수량</th><td>{{prod.amount}}</td>
+    </tr>
+</table>
+<!-- 수정 버튼을 누르면 get방식으로 /product/edit?num={{prod.num}} 요청 -->
+<a href="/product/edit?num={{prod.num}}"><input type="button" value="수정"></a>
+<input type="button" value="홈" onclick="go()">
+</body>
+</html>

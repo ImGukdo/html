@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>제품목록화면</title>
+    <script>
+        function go(){
+            location.href='/';
+        }
+    </script>
+</head>
+<body>
+<h3>제품목록</h3>
+<table border="1">
+  <tr>
+    <th>번호</th><th>이름</th><th>가격</th><th>수량</th>
+  </tr>
+  {% for p in prods %}  <!-- flask for문 -->
+  <tr>
+      <!-- 제품이름을 누르면 get방식으로 /product/edit?num={{p.num}} 요청 -->
+      <td>{{p.num}}</td><td><a href="/product/edit?num={{p.num}}">{{p.name}}</a></td>
+      <td>{{p.price}}</td><td>{{p.amount}}</td>
+  </tr>
+  {% endfor %}
+</table>
+<input type="button" value="홈" onclick="go()">
+</body>
+</html>
