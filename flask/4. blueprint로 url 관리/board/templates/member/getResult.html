@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>내정보화면</title>
+    <script>
+      function go(){  // index로 돌아가는 함수
+        location.href = '/';
+      }
+
+      function del(){  // 멤버 삭제 함수
+        var flag = confirm("정말 탈퇴 하시겠습니까?")
+        if(flag){
+            location.href = "/member/del"
+        }
+        else{
+            alert("탈퇴가 취소되었습니다.")
+        }
+      }
+    </script>
+</head>
+<body>
+<h3>회원정보</h3>
+<form action="/member/edit" method="post">  <!-- 내정보 수정 요청 -->
+<table border="1">
+  <tr><th>아이디</th>
+    <td><input type="text" name="id" readonly value="{{mem.id}}"></td></tr>
+  <tr><th>패스워드</th>
+    <td><input type="text" name="pwd" value="{{mem.pwd}}"></td></tr>
+  <tr><th>이름</th>
+    <td><input type="text" name="name" readonly value="{{mem.name}}"></td></tr>
+  <tr><th>이메일</th>
+    <td><input type="text" name="email" readonly value="{{mem.email}}"></td></tr>
+</table>
+<input type="submit" value="수정"><input type="button" value="탈퇴" onclick="del()"><input type="button" value="취소" onclick="go()">
+</form>
+</body>
+</html>
