@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 목록 화면</title>
+    <script>
+        function back(){
+            location.href = "/"
+        }
+    </script>
+</head>
+<body>
+<h3>글목록</h3>
+<a href="/board/add">글작성</a><br>
+<table border="1">
+  <tr>
+    <th>num</th><th>title</th><th>writer</th>
+  </tr>
+  {% for b in bd %}
+    <tr>
+        <td>{{b.num}}</td><td><a href="/board/detail?title={{b.title}}">{{b.title}}</a></td><td>{{b.writer}}</td>
+    </tr>
+  {% endfor %}
+</table>
+<br>
+<form action="/board/getbywriter" method="post">  <!-- 작성자 아이디로 게시글 검색 요청 -->
+    검색할 글의 작성자 아이디:<input type="text" name="writer">
+    <input type="submit" value="검색">
+</form>
+<form action="/board/getbytitle" method="post">  <!-- 게시글 제목으로 게시글 검색 요청 -->
+    검색할 글의 제목:<input type="text" name="title">
+    <input type="submit" value="검색">
+</form>
+<input type="button" value="돌아가기" onclick="back()">
+</body>
+</html>

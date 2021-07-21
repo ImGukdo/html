@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>글작성 화면</title>
+    <script>
+      function back(){
+        location.href = "/board/list"
+      }
+    </script>
+</head>
+<body>
+<h3>글작성</h3>
+<form action="/board/add" method="post">  <!-- 글 작성 후 게시 요청 -->
+  <table border="1">
+    <tr>
+      <th>title</th><td><input type="text" name="title"></td>
+    </tr>
+    <tr>
+      <th>writer</th><td><input type="text" name="writer" value="{{session.id}}" readonly></td>
+    </tr>
+    <tr>
+      <th>content</th><td><textarea name="content" rows="15" cols="45"></textarea></td>
+    </tr>
+  </table>
+  <input type="submit" value="작성"><input type="button" value="취소" onclick="back()">
+</form>
+</body>
+</html>
